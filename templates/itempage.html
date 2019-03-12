@@ -1,0 +1,9 @@
+{% extends "main.html" %}
+{% block content %}
+<h2 style="font-family:'Lucida Sans';">{{item.name}}</h2>
+<p style="font-family:'Lucida Sans';">{{item.description}}</p>
+</br>
+<a href="{{url_for('EditItem', category_id = item.category_id, item_id = item.id)}}"><button type="button">Edit Item</button></a>
+<a href="{{url_for('DeleteItem', category_id = item.category_id, item_id = item.id)}}"><button type="button">Delete Item</button></a>
+
+{% endblock %}

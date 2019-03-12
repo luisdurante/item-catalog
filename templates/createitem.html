@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% block content %}
+<form action="{{url_for('CreateItem')}}" method = 'POST'>
+
+    <p style="font-family: Lucida Sans;">Category:</p>
+       <select name='select-category'>
+           {% for category in categories %}
+           <option name='{{category.name}}'>{{category.category_name}}</option>
+           {%endfor%}
+        </select>
+    
+    <p style="font-family: Lucida Sans;">Name:</p>
+      <input type="text" size="30" name='name' required>
+    <p style="font-family: Lucida Sans;">Description:</p>
+      <textarea rows="6" size="30" name='description' required></textarea>
+
+    <input type="submit" value="Create Item">
+
+
+</form>
+
+{% endblock %}

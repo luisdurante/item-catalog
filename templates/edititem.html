@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% block content %}
+<form action="{{url_for('EditItem', category_id = item.category_id, item_id = item.id)}}" method = 'POST'>
+
+    <p>Category:</p>
+       <select name='select-category'>
+           {% for category in categories %}
+           <option name='{{category.name}}'>{{category.category_name}}</option>
+           {%endfor%}
+        </select>
+    
+    <p>Name:</p>
+      <input type="text" size="30" name='name' placeholder="{{item.name}}" required>
+    <p>Description:</p>
+      <input type="text" size="100" name='description' placeholder="{{item.description}}" required>
+
+    <input type="submit" value="Edit Item">
+
+
+</form>
+
+{% endblock %}

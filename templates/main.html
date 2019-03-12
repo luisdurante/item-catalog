@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div id="menu-line">
+</div>
+
+<div id="principal">
+<nav id='menu'>
+	<ul id="items-menu">
+		<a href="{{url_for('index')}}" class="menu-option"><li class="items-menu-li">Home</li></a>
+		<a href="{{url_for('CreateItem')}}" class="menu-option"><li class="items-menu-li">Create Item</li></a>
+		<li class="items-menu-li">
+			{% if 'username' not in session %}
+			<a href="{{url_for('showLogin')}}" class="menu-option">Login</a>
+			{% else %}
+			<a href="{{url_for('fbdisconnect')}}" class="menu-option">Logout</a>
+			{% endif %}
+
+		</li>
+	</ul>
+</nav>
+
+{% block content %}
+{% endblock %}
+</div>
+
+</body>
+</html>

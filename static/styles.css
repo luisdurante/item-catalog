@@ -1,0 +1,103 @@
+html, body{height: 100%; margin-top: 0; margin-left: 0;}
+#principal{
+    border: thin solid black;
+    position: relative;
+    width: 1024px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+#menu-line{
+    position: absolute;
+    background-color: #325082;
+    width: 100%;
+    height: 30px;
+    z-index: 2;
+}
+#items-menu{margin-top:7px;position: relative;z-index: 3;}
+
+.menu-option{
+    color: white;
+    text-decoration: none;
+    margin-left: 195px;
+}
+
+.menu-option:hover{
+    color: burlywood;
+    text-decoration: none;
+}
+
+.items-menu-li{
+    position: relative;
+    display: inline;
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#category-container{
+    position: relative;
+    margin: 0 auto;
+    width: 510px;
+}
+
+.categories-btn{
+    position: relative;
+    float: left;
+    width: 90px;
+    height: 35px;
+    background-color: #325082;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.categories-btn:hover{
+    background-color: burlywood;
+}
+
+.categories{
+    color: white;
+    text-decoration: none;
+    font-family: 'Lucida Sans';
+    top: 8px;
+    position: relative;
+}
+
+
+.itemlist-container{
+    border: thin solid black;
+    position: relative;
+    margin-top: 0px;
+    height: 55px;
+    margin-top: 25px;
+    width: 1000px;
+    margin-left: 10px;
+}
+
+.btn-seeitem{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: #325082;
+    width: 100px;
+    height: 43px;
+}
+
+.btn-seeitem:hover{
+    background-color: burlywood;
+}
+
+.seemore {
+    color: white;
+    text-decoration: none;
+    font-family: 'Lucida Sans';
+    top: 11px;
+    position: relative;
+}
+
+.itemlist-name{
+    font-size: 25px;
+    margin-left: 5px;
+    top: 13px;
+    position: relative;
+    font-family: 'Lucida Sans';
+}

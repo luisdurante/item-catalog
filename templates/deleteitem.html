@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+{% block content %}
+<form action="{{url_for('DeleteItem', category_id = item.category_id, item_id = item.id)}}" method = 'POST'>
+    <p style="font-family: Lucida Sans;">Are you sure you want to delete:</p>
+    <p style="font-family: Lucida Sans;">Name: {{item.name}}</p>
+    <p style="font-family: Lucida Sans;">Description: {{item.description}}</p>
+    <input type="submit" value="Delete Item">
+
+</form>
+<a href="{{url_for('ShowItem',category_id = item.category_id, item_id = item.id)}}"><input type="submit" value="Cancel"></a>
+
+{% endblock %}

@@ -287,17 +287,52 @@ def fbdisconnect():
 # JSON
 
 # All Categories
-@app.route('/categories/JSON')
+@app.route('/api/categories', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def categoriesJSON():
-    categories = session.query(Category).all()
-    return jsonify(Categories=[i.serialize for i in categories])
+    if request.method == 'GET':
+        categories = session.query(Category).all()
+        return jsonify(Categories=[i.serialize for i in categories])
+
+    elif request.method == 'POST':
+        name = request.args.get('name')
+        category_info = session.query(Category).filter_by(category_name=name).first()
+        print(category_info)
+        if category_info is None:
+            category = Category(category_name = name)
+            session.add(category)
+            session.commit()
+            return jsonify(category = category.serialize)
+        else:
+            return jsonify({"error":"Category name already exists!"})
+
+    elif request.method == 'PUT':
+        category_id = request.args.get('id')
+        category_info = session.query(Category).filter_by(id=category_id).first()
+        if category_info is not None:
+            name = request.args.get('name')
+            category_info.category_name = name
+            session.add(category_info)
+            session.commit()
+            category_info = session.query(Category).filter_by(id=category_id).first()
+            return jsonify(category = category_info.serialize)
+        else:
+            return jsonify({"error":"Invalid ID"})
+
+    elif request.method == 'DELETE':
+        category_id = request.args.get('id')
+        category_info = session.query(Category).filter_by(id=category_id).first()
+        if category_info is not None:
+            session.delete(category_info)
+            session.commit()
+            return jsonify(category = category_info.serialize)
+        else:
+            return jsonify({"error":"Invalid ID"})
 
 # All Items
 @app.route('/items/JSON')
 def itemsJSON():
-    items = session.query(Item).all()
-    return jsonify(Items=[i.serialize for i in items])
-
+        items = session.query(Item).all()
+        return jsonify(Items=[i.serialize for i in items])
 # Specific Item
 @app.route('/<int:category_id>/<int:item_id>/JSON')
 def itemJSON(category_id, item_id):

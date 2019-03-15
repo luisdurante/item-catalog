@@ -33,13 +33,29 @@ Unfortunately, this is a test app, so facebook doesn't let you log in with your 
 - Email: vqpcneuhrc_1549648429@tfbnw.net Password: udacity
 - Email: knddtvusev_1548376565@tfbnw.net Password: udacity
 
-## JSON ENDPOINTS
-The application provides information in JSON, to access it you need to change de url path to:
-- localhost:8000/categories/JSON to see the categories;
-- localhost:8000/items/JSON to see the items in the catalog;
-- localhost:8000/(category_id)/(item_id)/JSON to see an specific item.
+## API ENDPOINTS
+The application provides information in JSON according to the HTTP method requested:
+- localhost:8000/api/categories to see the categories;
+- localhost:8000/api/items to see the items in the catalog;
 
+### HTTP Methods
+The application responds to the following methods:
+- GET
+- POST
+- PUT
+- DELETE
 
+### API ARGS
+- item_id - Item ID
+- item_name - Item name
+- item_description - Item description
+- category_id - Category ID
+- category_name - Category name
+- email - User email;
+
+API request example:
+
+POST - localhost:8000/api/items?category_id=1&item_name=Very Nice Item&item_description=Nice Description&email=knddtvusev_1548376565@tfbnw.net
 
 
 [Vagrant]: <https://www.vagrantup.com/downloads.html>

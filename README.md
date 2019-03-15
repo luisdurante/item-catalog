@@ -24,7 +24,7 @@ In this project you can:
 	To add the categories to the system you need to execute another file, run it typing: 
 	 >`python itemsmenu.py`
 - #### Run the program
-	Ok, everything is set! Now just run the project:
+	Ok, everything is set! Now just run the project:gi6
 	>`python project.py`
 	
 ## IMPORTANT!
@@ -55,7 +55,8 @@ The application responds to the following methods:
 
 API request example:
 
-POST - localhost:8000/api/items?category_id=1&item_name=Very Nice Item&item_description=Nice Description&email=knddtvusev_1548376565@tfbnw.net
+POST 
+>localhost:8000/api/items?category_id=1&item_name=Very Nice Item&item_description=Nice Description&email=knddtvusev_1548376565@tfbnw<i></i>.net
 
 
 [Vagrant]: <https://www.vagrantup.com/downloads.html>

@@ -287,12 +287,11 @@ def fbdisconnect():
 # JSON ENDPOINTS
 
 # All Categories
-@app.route('/api/categories', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@app.route('/api/categories', methods=['GET', 'POST'])
 def categoriesJSON():
     if request.method == 'GET':
         categories = session.query(Category).all()
         return jsonify(Categories=[i.serialize for i in categories])
-
     elif request.method == 'POST':
         name = request.args.get('category_name')
         category_info = session.query(Category).filter_by(category_name=name).first()
@@ -305,8 +304,12 @@ def categoriesJSON():
         else:
             return jsonify({"error":"Category name already exists!"})
 
+@app.route('/api/categories/<int:category_id>', methods=['GET', 'PUT', 'DELETE'])
+def categoryJSON(category_id):
+    if request.method == 'GET':
+        category = session.query(Category).filter_by(id=category_id).first()
+        return jsonify(Category = category.serialize)
     elif request.method == 'PUT':
-        category_id = request.args.get('category_id')
         category_info = session.query(Category).filter_by(id=category_id).first()
         if category_info is not None:
             name = request.args.get('category_name')
@@ -317,32 +320,23 @@ def categoriesJSON():
             return jsonify(category = category_info.serialize)
         else:
             return jsonify({"error":"Invalid ID"})
-
     elif request.method == 'DELETE':
-        category_id = request.args.get('category_id')
         category_info = session.query(Category).filter_by(id=category_id).first()
         if category_info is not None:
             session.delete(category_info)
             session.commit()
+            category_info = session.query(Category).all()
             return jsonify(category = category_info.serialize)
         else:
             return jsonify({"error":"Invalid ID"})
+
 
 # All Items
 @app.route('/api/items', methods=["GET","POST","PUT","DELETE"])
 def itemsJSON():
     if request.method == 'GET':
-        item_id = request.args.get('item_id')
-        if request.args.get('item_id') is None:
-            items = session.query(Item).all()
-            return jsonify(Items=[i.serialize for i in items])
-        else:
-            item = session.query(Item).filter_by(id = item_id).first()
-            if item is not None:
-                return jsonify(Item = item.serialize)
-            else:
-                return jsonify({"error":"Invalid item id"})
-
+        items = session.query(Item).all()
+        return jsonify(Items=[i.serialize for i in items])
     elif request.method == 'POST':
         category_id = request.args.get('category_id')
         name = request.args.get('item_name')
@@ -360,12 +354,16 @@ def itemsJSON():
         else:
             jsonify({"error":"Invalid category_id or email"})
 
+@app.route('/api/items/<int:item_id>',methods=['GET','PUT','DELETE'])
+def itemJSON(item_id):
+    if request.method == 'GET':
+        item = session.query(Item).filter_by(id=item_id).first()
+        return jsonify(item = item.serialize)
     elif request.method == 'PUT':
-        item_id = request.args.get('item_id')
         item_info = session.query(Item).filter_by(id=item_id).first()
         if item_info is not None:
             if request.args.get('item_name') is not None:
-                name = request.args.get('name')
+                name = request.args.get('item_name')
                 if name =="":
                     return jsonify({"error":"Invalid name"})
                 else:
@@ -376,21 +374,18 @@ def itemsJSON():
             if request.args.get('item_description') is not None:
                 description = request.args.get('item_description')
                 item_info.description = description
-
             session.add(item_info)
             session.commit()
             item_info = session.query(Item).filter_by(id=item_id).first()
             return jsonify(Item = item_info.serialize)
         else:
             return jsonify({"error":"Invalid ID"})
-        
     elif request.method == 'DELETE':
-        item_id = request.args.get('item_id')
         item_info = session.query(Item).filter_by(id=item_id).first()
         if item_info is not None:
-            items =  session.query(Item).all()
             session.delete(item_info)
             session.commit()
+            items =  session.query(Item).all()
             return jsonify(Items=[i.serialize for i in items])
 
 if __name__ == '__main__':

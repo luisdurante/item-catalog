@@ -36,7 +36,9 @@ Unfortunately, this is a test app, so facebook doesn't let you log in with your 
 ## API ENDPOINTS
 The application provides information in JSON according to the HTTP method requested:
 - localhost:8000/api/categories to see the categories;
+- localhost:8000/api/categories/(category_id) to see a specific category;
 - localhost:8000/api/items to see the items in the catalog;
+- localhost:8000/api/item/(item_id) to see a specific item;
 
 ### HTTP Methods
 The application responds to the following methods:

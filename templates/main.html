@@ -2,30 +2,77 @@
 <html lang="en">
 <head>
 	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.min.css') }}">
+	<!-- <link rel=stylesheet type=text/css href="static/css/reset.css"> -->
+	<script src="static/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-<div id="menu-line">
-</div>
 
-<div id="principal">
-<nav id='menu'>
-	<ul id="items-menu">
-		<a href="{{url_for('index')}}" class="menu-option"><li class="items-menu-li">Home</li></a>
-		<a href="{{url_for('CreateItem')}}" class="menu-option"><li class="items-menu-li">Create Item</li></a>
-		<li class="items-menu-li">
-			{% if 'username' not in session %}
-			<a href="{{url_for('showLogin')}}" class="menu-option">Login</a>
-			{% else %}
-			<a href="{{url_for('fbdisconnect')}}" class="menu-option">Logout</a>
-			{% endif %}
+<header class="PrincipalHeader">
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="{{url_for('index')}}">Item Catalog</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+		
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav">
+						<li class="nav-item active">
+							<a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="{{url_for('CreateItem')}}">Create Item <span class="sr-only">(current)</span></a>
+						</li>
+				</ul>
 
-		</li>
-	</ul>
-</nav>
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="#">
+							<svg class="github" width="20" height="20" alt="Github">
+								<path class="github"></path>
+							</svg>
+						</a>
+					</li>
 
-{% block content %}
-{% endblock %}
-</div>
-
+					<li class="nav-item">
+						<a class="nav-link" href="#">
+							<svg class="linkedin" width="20" height="20" alt="Linkedin"></svg>
+						</a>
+					</li>
+					<li class="nav-item active">
+						{% if 'username' not in session %}
+						<a class="nav-link" href="{{url_for('showLogin')}}">Login</a>
+						{% else %}
+						<a class="nav-link" href="{{url_for('fbdisconnect')}}">{{session['username']}}</a>
+						{% endif %}
+					</li>
+				</ul>
+			</div>
+		</div>
+	  </nav>
+</header>
+<main class="main">
+	{% block content %}
+	{% endblock %}
+</main>
+<footer class="pt-4 PrincipalFooter">
+	<div class="container">
+		<ul class="list-inline">
+			<li class="list-inline-item">
+				<p class="lead">My <a class="footer-link" href="#">Linkedin</a></p></a>
+			</li>
+			<li class="list-inline-item">
+				<p class="lead">My <a class="footer-link" href="#">Github</a></p></a>
+			</li>
+		</ul>
+		<div class="row">
+			<div class="col-md-12 coluna-footer">
+				<span class="lead">A simple project made by me :)</span>
+			</div>
+		</div>
+	</div>
+</footer>
 </body>
 </html>

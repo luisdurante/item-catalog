@@ -1,6 +1,33 @@
 {% extends "main.html" %}
 {% block content %}
-<span style = "font-family: 'Lucida Sans';">Check our items by visiting the categories below!</span>
+<div class="container-fluid index1container">
+    <div class="container" style="padding-top:5%;">
+        <div class="jumbotron welcome-jumbotron">
+            <h1 class="display-4">Welcome to the Item Catalog</h1>
+            <p class="lead">This is a simple project to upload items and create a catalog. Give it a try! </p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Create Item!</a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid categories-fluid">
+    <div class="row">
+        <div class="container">
+          <h1 class="display-4 categories-title">Check out some of our categories!</h1>   
+          <ul class="list-categories list-inline">
+              {% for category in categories %}
+                <li class="list-inline-item">
+                  <a class="lead category-item" href="{{url_for('SearchItem', category_id = category.id)}}">
+                      {{category.category_name}}
+                  </a>
+                </li>
+              {% endfor %}
+          </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- <span style = "font-family: 'Lucida Sans';">Check our items by visiting the categories below!</span>
 <div id="category-container">
 {% for category in categories %}
 <a href="{{url_for('SearchItem', category_id = category.id)}}">
@@ -13,5 +40,5 @@
 </div></a>
 
 {% endfor %}
-</div>
+</div> -->
 {% endblock %}

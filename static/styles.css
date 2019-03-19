@@ -1,4 +1,4 @@
-html, body{height: 100%; margin-top: 0; margin-left: 0;}
+/* html, body{height: 100%; margin-top: 0; margin-left: 0;}
 #principal{
     border: thin solid black;
     position: relative;
@@ -100,4 +100,65 @@ html, body{height: 100%; margin-top: 0; margin-left: 0;}
     top: 13px;
     position: relative;
     font-family: 'Lucida Sans';
+} */
+.github{
+    background: url(img/github.svg) no-repeat;
+    fill:white;
+}
+.linkedin{
+    background: url(img/linkedin.svg) no-repeat;
+}
+.index1container{
+    background: url(img/jumbotronbg.jpg) no-repeat;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+}
+
+.welcome-jumbotron{
+    text-align: center;
+}
+
+.categories-fluid{
+    background-color: #f2f2f2;
+    height: 500px;
+}
+.list-categories{
+    /* list-style-type: none;
+    display: flex;
+     flex-direction: column;
+    flex-wrap: wrap;
+    height: 300px; */
+    text-align: center;
+    
+}
+
+.category-item{
+    color: #212529;
+    text-decoration: underline;
+    font-size: 20px;
+
+}
+
+.categories-title{
+    padding-top:5%; 
+    text-align: center;
+}
+
+.PrincipalFooter{
+    background-color:#343a40;
+}
+
+.PrincipalFooter ul{
+    color: #fff;
+    text-align: center;
+}
+.coluna-footer{
+    text-align: center;
+    color: #fff;
+}
+
+.footer-link{
+    color: #fff;
+    text-decoration: underline;
 }

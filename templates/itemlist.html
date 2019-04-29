@@ -1,13 +1,17 @@
 {% extends "main.html" %}
 {% block content %}
 {% for item in items %}
-<div class='itemlist-container'>
-<span class="itemlist-name">{{item.name}}</span>
-<a href="{{url_for('ShowItem',category_id = item.category_id ,item_id = item.id)}}">
-    <div class = 'btn-seeitem'>
-        <center><span class='seemore'>See more</span></center>
+<div class="container">
+    <center>
+    <div class='itemlist-container'>
+        <span class="itemlist-name">{{item.name}}</span>
+        <a href="{{url_for('ShowItem',category_id = item.category_id ,item_id = item.id)}}">
+            <div class = 'btn-seeitem'>
+                <span class='seemore'>See more</span></center>
+            </div>
+        </a>
     </div>
-</a>
 </div>
+
 {% endfor %}
 {% endblock %}

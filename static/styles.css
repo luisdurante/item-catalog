@@ -147,6 +147,9 @@
 
 .PrincipalFooter{
     background-color:#343a40;
+    position: fixed;
+    bottom:0;
+    width: 100%;
 }
 
 .PrincipalFooter ul{
@@ -161,4 +164,10 @@
 .footer-link{
     color: #fff;
     text-decoration: underline;
+}
+
+#new-item-container{
+    border: thin solid black;
+    border-radius: 30px;
+    height: 245px;
 }

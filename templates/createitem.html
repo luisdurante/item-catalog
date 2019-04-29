@@ -1,22 +1,29 @@
 {% extends "main.html" %}
 {% block content %}
 <form action="{{url_for('CreateItem')}}" method = 'POST'>
-
-    <p style="font-family: Lucida Sans;">Category:</p>
-       <select name='select-category'>
-           {% for category in categories %}
-           <option name='{{category.name}}'>{{category.category_name}}</option>
-           {%endfor%}
-        </select>
+  <div class="container" style="margin-top:10px;">
+      <p style="font-size: 25px;" class="font-weight-bold">New Item</p>
+  </div>
+  <div class="container" id="new-item-container">
     
-    <p style="font-family: Lucida Sans;">Name:</p>
-      <input type="text" size="30" name='name' required>
-    <p style="font-family: Lucida Sans;">Description:</p>
-      <textarea rows="6" size="30" name='description' required></textarea>
-
-    <input type="submit" value="Create Item">
-
-
+      <div class="input-group mb-3" style="margin-top:10px;">
+          <span style="margin-top:7px;" class="font-weight-bolder" id="basic-addon1">Item Name: </span>
+          <input type="text" style="margin-left: 15px;" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+          <span style="margin-top:3px;" class="font-weight-bolder" id="basic-addon1">Category: </span>
+          <select name='select-category' style="margin-left: 25px;">
+              {% for category in categories %}
+              <option name='{{category.name}}'>{{category.category_name}}</option>
+              {%endfor%}
+          </select>
+      </div>
+      <div class="input-group mb-3">
+          <span style="margin-top:7px;" class="font-weight-bolder" id="basic-addon1">Description: </span>
+          <textarea class="form-control" style="margin-left: 8px;" aria-label="With textarea"></textarea>
+      </div>
+    <input style="margin-left: 100px;" type="submit" value="Create Item">  
+  </div>  
 </form>
 
 {% endblock %}

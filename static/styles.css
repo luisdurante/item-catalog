@@ -171,3 +171,13 @@
     border-radius: 30px;
     height: 245px;
 }
+
+.itemlist-container{
+    border: thin solid black;
+    position: relative;
+    margin-top: 0px;
+    height: 55px;
+    margin-top: 25px;
+    width: 350px;
+    margin-left: 10px;
+}
